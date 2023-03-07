@@ -1,0 +1,18 @@
+<table class="table table-compact ">
+    <tbody cdkDropListGroup>
+        <tr>
+            <th width="50px"></th>
+            <th style="text-align: center;">{{formatDate(item)}}</th>
+        </tr>
+        <div cdkDropList (cdkDropListDropped)="drop($event)">
+            <tr *ngFor="let time of times" class="example-box" (click)="openCreateAppointment(time)" y cdkDrag>
+                <td>
+                    {{timeLabels[time]}}
+                </td>
+                <td class="example-list">
+                    {{getDailySchedule(time)?.title}}
+                </td>
+            </tr>
+        </div>
+    </tbody>
+</table>

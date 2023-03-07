@@ -1,0 +1,32 @@
+<div>
+    <div class="create-dialog">
+        <button mat-icon-button color="accent" aria-label="Example icon button with a menu icon" (click)="onDelete()">
+            <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-icon-button color="accent" aria-label="Example icon button with a close icon" (click)="onNoClick()">
+            <mat-icon >close</mat-icon>
+        </button>
+    </div>
+    <div class="container">
+        <div mat-dialog-content>
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Add Title" (keyup)="getTitle($event)" value={{getExistingData()?.title}}>
+                <mat-error *ngIf="titleFormControl.hasError('required')">
+                    Title is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <div style="display:flex;">
+                <mat-icon>access_time</mat-icon> <span
+                    style="margin-left:5px; margin-bottom:10px; line-height:24px;">{{data.currentTime}}</span>
+            </div>
+            <mat-form-field class="example-full-width" (keyup)="getDescription($event)">
+                <mat-label>Add a description</mat-label>
+                <textarea matInput placeholder="Add Description" value={{getExistingData()?.description}}></textarea>
+            </mat-form-field>
+        </div>
+
+        <mat-dialog-actions>
+            <button mat-raised-button extended color="info"  cdkFocusInitial (click)="onSaveClick()">Save</button>
+        </mat-dialog-actions>
+    </div>
+</div>
